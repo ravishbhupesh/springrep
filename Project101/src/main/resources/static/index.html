@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Booking Bot</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+	<p>
+		Get your greeting <a href="/greeting">here</a>
+	</p>
+    <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	<h1 align="center">Search Flights</h1>
+    <form action="search" method="post" autocomplete="off">
+        <table>
+            <div class="col-md-8 col-md-offset-2">
+                <!-- flightSearchForm.travelType -->
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="travelType">Travel Type</label>
+                    <div class="col-md-8 radio">
+                       	<input type="radio" name="oneway">One Way
+					    <input type="radio" name="return">Return
+					  	<input type="radio" name="multicity">Multi City
+                    </div>
+                </div>
+                <!-- flightSearchForm.fromDest && flightSearchForm.toDest Labels -->
+                <div class="form-group">
+                    <label class="col-md-3 control-label">From</label>
+                    <div class="col-md-3" onkeyup="getFromDestination(this)">
+                        <input type="text" class="form-control" id="fromD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="toDest">To</label>
+                    <div class="col-md-3" onkeyup="getToDestination(this)">
+                        <input type="text" class="form-control" id="toD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="depDate">Departure Date</label>
+                    <div class="col-md-3">
+                    	<div class="input-group date" id="depDate">
+	                        <input type="text" class="form-control" />
+		                    <span class="input-group-addon">
+		                        <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+	                    </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="returnDate">Return Date</label>
+                    <div class="col-md-3">
+                    	<div class="input-group date" id="returnDate">
+	                        <input type="text" class="form-control" />
+		                    <span class="input-group-addon">
+		                        <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+	                    </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="travelClass">Travel Class</label>
+                    <div class="col-md-8 radio">
+                        	<input type="radio" name="economy">Economy
+						    <input type="radio" name="business">Business
+						  	<input type="radio" name="firstclass">First Class
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="directFlightsOnly">Direct Flights Only</label>
+                    <div class="col-md-3">
+                        <input type="checkbox" value="directFlightsOnly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="refundable">Refundable</label>
+                    <div class="col-md-3">
+                        <input type="checkbox" value="refundable">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="adults">Adults</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="adults">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="childern">Childern</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="childern">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="infants">Infants</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="infants">
+                    </div>
+                </div>
+            </div>
+        </table>
+        <table class="control-label col-sm-2 col-sm-offset-6">
+            <tr>
+                <td colspan="3">
+                    <input type="submit" value="Search" name="Search" align="center" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
