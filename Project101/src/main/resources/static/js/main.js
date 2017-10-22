@@ -1,6 +1,7 @@
  $(function () {
    var bindDatePicker = function() {
 		$(".date").datetimepicker({
+		minDate:new Date(),
         format:'YYYY-MM-DD',
 		}).find('input:first').on("blur",function () {
 			// check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
@@ -32,3 +33,13 @@
    }
    bindDatePicker();
  });
+ 
+ $("input[name=travelType]").change(function () {
+     if (this.value == "return"){
+    	 alert("Yes it return");
+    	 alert($("depDate").val())
+    	 $('#rtrnDt').prop('disabled', "disabled");
+     }else{
+         alert("No it's not return");
+     }
+});
