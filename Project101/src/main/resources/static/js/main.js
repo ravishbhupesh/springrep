@@ -1,45 +1,69 @@
- $(function () {
-   var bindDatePicker = function() {
-		$(".date").datetimepicker({
-		minDate:new Date(),
-        format:'YYYY-MM-DD',
-		}).find('input:first').on("blur",function () {
-			// check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
-			// update the format if it's yyyy-mm-dd
-			var date = parseDate($(this).val());
-			if (! isValidDate(date)) {
-				//create date based on momentjs (we have that)
-				date = moment().format('YYYY-MM-DD');
-			}
-			$(this).val(date);
-		});
-	}
-   
-   var isValidDate = function(value, format) {
-		format = format || false;
-		// lets parse the date to the best of our knowledge
-		if (format) {
-			value = parseDate(value);
+$( function() {
+	$( "#depDt_datepicker" ).datepicker({ 
+		minDate: 0,
+		defaultDate: 0,
+		dateFormat: "yy-mm-dd"
+	}).datepicker('setDate', new Date());
+} );
+
+$( function() {
+	$( "#rtrnDt_datepicker" ).datepicker({ 
+		minDate: 0,
+		defaultDate: 0,
+		dateFormat: "yy-mm-dd"
+	}).datepicker('setDate', new Date());
+} );
+
+$(document).ready(function() {
+	// Get value on change radio function.
+	$('input:radio').change(function(){
+		var value = $("form input[type='radio']:checked").val();
+		if((value == 'multicity') || (value == 'oneway')){
+			$("#rtrnDt_datepicker").attr('disabled', 'true');
+            $("#rtrnDt_datepicker").val('')
+		} else {
+			$("#rtrnDt_datepicker").removeAttr('disabled');
 		}
-		var timestamp = Date.parse(value);
-		return isNaN(timestamp) == false;
-   }
-   
-   var parseDate = function(value) {
-		var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
-		if (m)
-			value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
-		return value;
-   }
-   bindDatePicker();
- });
- 
- $("input[name=travelType]").change(function () {
-     if (this.value == "return"){
-    	 alert("Yes it return");
-    	 alert($("depDate").val())
-    	 $('#rtrnDt').prop('disabled', "disabled");
-     }else{
-         alert("No it's not return");
-     }
+	});
 });
+
+function getFromDestination(elm) {
+    var url = "/getDestination/",
+        input = $(elm).children('input[name="fromDest"]'),
+        value = input.val();
+    $.ajax({
+        url: url,
+        type: 'GET',
+        data: {'q': value},
+        success: function(response){
+            response = JSON.parse(response)
+            console.log(response);
+            if (response.status) {
+                var available_dest = response.data;
+                $( "#id_fromDest" ).autocomplete({
+                    source: available_dest
+                });
+            }
+        }
+    })
+}
+function getToDestination(elm) {
+    var url = "/getDestination/",
+        input = $(elm).children('input[name="toDest"]'),
+        value = input.val();
+    $.ajax({
+        url: url,
+        type: 'GET',
+        data: {'q': value},
+        success: function(response){
+            response = JSON.parse(response)
+            console.log(response);
+            if (response.status) {
+                var available_dest = response.data;
+                $( "#id_toDest" ).autocomplete({
+                    source: available_dest
+                });
+            }
+        }
+    })
+}

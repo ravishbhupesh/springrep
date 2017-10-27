@@ -38,7 +38,7 @@ public class RequestForm implements Serializable {
 	private String travelClass = TravelClass.ECONOMY.travelClass();
 	private boolean directFlightsOnly;
 	private boolean refundable;
-	private int adults;
+	private int adults = 1;
 	private int children;
 	private int infants;
 

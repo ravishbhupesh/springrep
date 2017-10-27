@@ -5,10 +5,11 @@
 	<!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    
+
+	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css' />
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css' />
-	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css' />
-	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' />
+	<!-- link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css' /-->
+	<!-- link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' /-->
 </head>
 <body>
 	<p>
@@ -35,36 +36,28 @@
             <!-- ROW 2 - flightSearchForm.fromDest && flightSearchForm.toDest Labels -->
             <div class="form-group row">
                 <label class="col-md-3 control-label">From</label>
-                <div class="col-md-3" onkeyup="getFromDestination(this)">
-					<input type="text" class="form-control" id="fromDest"
+                <div class="col-md-3">
+					<input type="text" class="form-control" id="fromDest" onkeyup="getFromDestination(this)"
 						name="fromDest" value="Where are you flying from..." th:field="*{fromD}" />
 				</div>
-				<div th:if="${#fields.hasErrors('fromD')}" th:errors="*{fromD}">Error</div>
                 <label class="col-md-3 control-label" >To</label>
-                <div class="col-md-3" onkeyup="getToDestination(this)">
-                    <input type="text" class="form-control" id="toD"
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="toDest" onkeyup="getToDestination(this)"
 						name="toD" value="Where are you flying to..." th:field="*{toD}" />
                 </div>
-                <div th:if="${#fields.hasErrors('toD')}" th:errors="*{toD}">Error</div>
             </div>
             <!-- ROW 3 - Departure Date & Return Date -->
             <div class="form-group row">
                 <label class="col-md-3 control-label" >Departure Date</label>
                 <div class="col-md-3">
                 	<div class="input-group date" >
-	                    <input id="depDate" type="text" class="form-control" th:field="*{depDt}" />
-	                  	<span class="input-group-addon">
-	                    	<span class="glyphicon glyphicon-calendar"></span>
-	                  	</span>
+	                    <input name="depDate" id="depDt_datepicker" class="form-control" type="text" th:field="*{depDt}" />
                 	</div>
                 </div>
                 <label class="col-md-3 control-label" >Return Date</label>
                 <div class="col-md-3">
                 	<div class="input-group date" >
-                    	<input id="*{rtrnDt}" type="text" class="form-control" th:field="*{rtrnDt}" />
-                  		<span class="input-group-addon">
-                      		<span class="glyphicon glyphicon-calendar"></span>
-                    	</span>
+                    	<input name="rtrnDt" id="rtrnDt_datepicker" class="form-control" type="text" th:field="*{rtrnDt}" />
                 	</div>
             	</div>
             </div>
@@ -110,9 +103,10 @@
 
 	<!-- Scripts -->    
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
 	<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js'></script>
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js'></script>
+	<!-- script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js'></script-->
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
