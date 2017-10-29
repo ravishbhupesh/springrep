@@ -48,4 +48,14 @@ public class Slice extends Kind {
 		this.segment = segment;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",duration-" + getDuration());
+		for (Segment s : getSegment()) {
+			sb.append(",Segments-");
+			sb.append("<<" + s.toString() + ">>");
+		}
+		return sb.toString();
+	}
+
 }

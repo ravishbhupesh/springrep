@@ -69,4 +69,15 @@ public class PricingTax extends Kind {
 		this.salePrice = salePrice;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",id-" + getId());
+		sb.append(",chargeType-" + getChargeType());
+		sb.append(",code-" + getCode());
+		sb.append(",country-" + getCountry());
+		sb.append(",salePrice-" + getSalePrice());
+		return sb.toString();
+
+	}
+
 }

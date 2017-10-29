@@ -40,4 +40,11 @@ public class Flight {
 		this.number = number;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Carrier-" + getCarrier());
+		sb.append("Number-" + getNumber());
+		return sb.toString();
+	}
+
 }

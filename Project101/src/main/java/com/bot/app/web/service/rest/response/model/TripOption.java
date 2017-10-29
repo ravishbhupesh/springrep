@@ -74,4 +74,19 @@ public class TripOption extends Kind {
 		this.pricing = pricing;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",id-" + getId());
+		sb.append(",saleTotal-" + getSaleTotal());
+		for (Slice s : getSlice()) {
+			sb.append(",slice-");
+			sb.append("<<" + s.toString() + ">>");
+		}
+		for (Pricing p : getPricing()) {
+			sb.append(",pricing-");
+			sb.append("<<" + p.toString() + ">>");
+		}
+		return sb.toString();
+	}
+
 }

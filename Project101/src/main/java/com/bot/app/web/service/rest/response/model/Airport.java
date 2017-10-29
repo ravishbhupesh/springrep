@@ -25,4 +25,10 @@ public class Airport extends Data {
 		this.city = city;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",city-" + getCity());
+		return sb.toString();
+	}
+
 }

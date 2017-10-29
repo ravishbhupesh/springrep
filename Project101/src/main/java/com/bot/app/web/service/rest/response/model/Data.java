@@ -52,4 +52,12 @@ public abstract class Data extends Kind {
 		this.id = id;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",id-" + getId());
+		sb.append(",code-" + getCode());
+		sb.append(",name-" + getName());
+		return sb.toString();
+	}
+
 }

@@ -41,4 +41,11 @@ public class SegmentPricing extends Kind {
 		this.segmentId = segmentId;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",FareId-" + getFareId());
+		sb.append(",SegmentId-" + getSegmentId());
+		return sb.toString();
+	}
+
 }

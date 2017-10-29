@@ -29,4 +29,10 @@ public abstract class Kind {
 		this.kind = kind;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Kind-" + getKind());
+		return sb.toString();
+	}
+
 }

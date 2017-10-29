@@ -97,4 +97,29 @@ public class TripData extends Kind {
 		this.carrier = carrier;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		for (Airport a : getAirport()) {
+			sb.append(",airport-");
+			sb.append("<<" + a.toString() + ">>");
+		}
+		for (City c : getCitie()) {
+			sb.append(",city-");
+			sb.append("<<" + c.toString() + ">>");
+		}
+		for (Aircraft a : getAircraft()) {
+			sb.append(",aircraft-");
+			sb.append("<<" + a.toString() + ">>");
+		}
+		for (Tax t : getTax()) {
+			sb.append(",tax-");
+			sb.append("<<" + t.toString() + ">>");
+		}
+		for (Carrier c : getCarrier()) {
+			sb.append(",carrier-");
+			sb.append("<<" + c.toString() + ">>");
+		}
+		return sb.toString();
+	}
+
 }

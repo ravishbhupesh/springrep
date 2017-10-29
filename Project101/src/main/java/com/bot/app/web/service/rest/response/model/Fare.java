@@ -74,4 +74,14 @@ public class Fare extends Kind {
 		this.basisCode = basisCode;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",Id-" + getId());
+		sb.append(",Origin-" + getOrigin());
+		sb.append(",Destination-" + getDestination());
+		sb.append(",Carrier-" + getCarrier());
+		sb.append(",BasisCode-" + getBasisCode());
+		return sb.toString();
+	}
+
 }

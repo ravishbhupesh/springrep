@@ -35,4 +35,10 @@ public class TripSearch extends Kind implements Serializable {
 		this.trips = trips;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",trips-" + getTrips().toString());
+		return sb.toString();
+	}
+
 }

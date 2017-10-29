@@ -21,6 +21,7 @@ public class Pricing extends Kind {
 	private String fareCalculation;
 	private String latestTicketingTime;
 	private String ptc;
+	private boolean refundable;
 	private List<Fare> fare;
 	private List<SegmentPricing> segmentPricing;
 	private Passengers passengers;
@@ -146,6 +147,47 @@ public class Pricing extends Kind {
 	@JsonProperty("tax")
 	public void setTax(List<PricingTax> tax) {
 		this.tax = tax;
+	}
+
+	public boolean isRefundable() {
+		return refundable;
+	}
+
+	@JsonProperty("refundable")
+	public void setRefundable(boolean refundable) {
+		this.refundable = refundable;
+	}
+
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",baseFareTotal-" + getBaseFareTotal());
+		sb.append(",saleFareTotal-" + getSaleFareTotal());
+		sb.append(",saleTaxTotal-" + getSaleTaxTotal());
+		sb.append(",saleTotal-" + getSaleTotal());
+		sb.append(",fareCalculation-" + getFareCalculation());
+		sb.append(",latestTicketingTime-" + getLatestTicketingTime());
+		sb.append(",ptc-" + getPtc());
+		sb.append(",refundable-" + isRefundable());
+		sb.append(",passengers-" + getPassengers());
+		if (getFare() != null) {
+			for (Fare f : getFare()) {
+				sb.append(",fares-");
+				sb.append("<<" + f.toString() + ">>");
+			}
+		}
+		if (getSegmentPricing() != null) {
+			for (SegmentPricing sp : getSegmentPricing()) {
+				sb.append(",SegmentPricing-");
+				sb.append("<<" + sp.toString() + ">>");
+			}
+		}
+		if (getTax() != null) {
+			for (PricingTax t : getTax()) {
+				sb.append(",PricingTax-");
+				sb.append("<<" + t.toString() + ">>");
+			}
+		}
+		return sb.toString();
 	}
 
 }

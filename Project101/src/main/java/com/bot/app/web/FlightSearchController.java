@@ -53,9 +53,16 @@ public class FlightSearchController {
 		// System.out.println(response.getStatusCodeValue());
 		// System.out.println(response.getBody());
 		String jsonResponse = new String(Files.readAllBytes(Paths.get("C:/jsonResponse.txt")));
-		TripSearch tripSearch = responseParser.parser(jsonResponse);
-		model.addAttribute("tripSearch", tripSearch);
-		return "results";
+		// String jsonResponse = response.getBody();
+		try {
+			TripSearch tripSearch = responseParser.parser(jsonResponse);
+			// System.out.println(tripSearch);
+			model.addAttribute("tripSearch", tripSearch);
+			return "results";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("error", e.getMessage());
+			return "error";
+		}
 	}
-
 }

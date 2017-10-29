@@ -12,4 +12,8 @@ public class City extends Data {
 	public City() {
 	}
 
+	public String toString() {
+		return super.toString();
+	}
+
 }

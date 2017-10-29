@@ -21,6 +21,7 @@ public class Leg extends Kind {
 	private int duration;
 	private int mileage;
 	private String meal;
+	private String operatingDisclosure;
 
 	public Leg() {
 	}
@@ -122,6 +123,31 @@ public class Leg extends Kind {
 	@JsonProperty("meal")
 	public void setMeal(String meal) {
 		this.meal = meal;
+	}
+
+	public String getOperatingDisclosure() {
+		return operatingDisclosure;
+	}
+
+	@JsonProperty("operatingDisclosure")
+	public void setOperatingDisclosure(String operatingDisclosure) {
+		this.operatingDisclosure = operatingDisclosure;
+	}
+
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",id-" + getId());
+		sb.append(",aircraft-" + getAircraft());
+		sb.append(",arrivalTime-" + getArrivalTime());
+		sb.append(",departureTime-" + getDepartureTime());
+		sb.append(",origin-" + getOrigin());
+		sb.append(",destination-" + getDestination());
+		sb.append(",destinationTerminal-" + getDestinationTerminal());
+		sb.append(",duration-" + getDuration());
+		sb.append(",mileage-" + getMileage());
+		sb.append(",meal-" + getMeal());
+		sb.append(",OperatingDisclosure-" + getOperatingDisclosure());
+		return sb.toString();
 	}
 
 }

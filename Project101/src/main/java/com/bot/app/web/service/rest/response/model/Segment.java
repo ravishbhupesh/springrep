@@ -108,4 +108,21 @@ public class Segment extends Kind {
 		this.flight = flight;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(",id-" + getId());
+		sb.append(",duration-" + getDuration());
+		sb.append(",cabin-" + getCabin());
+		sb.append(",bookingCode-" + getBookingCode());
+		sb.append(",bookingCodeCount-" + getBookingCodeCount());
+		sb.append(",marriedSegmentGroup-" + getMarriedSegmentGroup());
+		sb.append(",flight-" + flight.toString());
+		for (Leg l : getLeg()) {
+			sb.append(",Legs-");
+			sb.append("<<" + l.toString() + ">>");
+		}
+		return sb.toString();
+	}
+
 }

@@ -58,4 +58,15 @@ public class Trip extends Kind implements Serializable {
 		this.tripOptions = tripOptions;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(",requestId-" + getRequestId());
+		sb.append(",tripData-" + tripData.toString());
+		for (TripOption to : getTripOptions()) {
+			sb.append(",TripOption-");
+			sb.append("<<" + to.toString() + ">>");
+		}
+		return sb.toString();
+	}
+
 }

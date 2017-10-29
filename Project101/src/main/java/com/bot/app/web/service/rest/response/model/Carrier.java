@@ -12,4 +12,8 @@ public class Carrier extends Data {
 	public Carrier() {
 	}
 
+	public String toString() {
+		return super.toString();
+	}
+
 }
